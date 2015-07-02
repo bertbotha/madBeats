@@ -18,21 +18,27 @@ $app.controller('BeatsMachine', function(){
 
 	$(window).keydown(function(){		
 		$('body').removeClass('up').addClass('down');
-		$audio[0].pause();
-		$audio[0].currentTime=0;
-		$audio[0].play();
+		registerHit();
 	}).keyup(function(){		
 		$('body').removeClass('down').addClass('up');		
 	});
 
 	$(window).on("touchstart", function(){
 		$('body').removeClass('up').addClass('down');
-		$audio[0].pause();
-		$audio[0].currentTime=0;
-		$audio[0].play();
+		registerHit();
 	}).on("touchend", function(){
 		$('body').removeClass('down').addClass('up');	
 	});
+
+	function registerHit () {
+
+		$audio[0].pause();
+		$audio[0].currentTime=0;
+		$audio[0].play();
+
+	}
+
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
