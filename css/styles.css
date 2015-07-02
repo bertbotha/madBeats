@@ -1,0 +1,11 @@
+.down{
+	background:#11de89;
+}
+
+.up{
+	background:white;
+	-moz-transition: all .05s ease-in;
+    -o-transition: all .05s ease-in;
+    -webkit-transition: all .05s ease-in;
+    transition: all .05s ease-in;
+}
