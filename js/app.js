@@ -25,6 +25,15 @@ $app.controller('BeatsMachine', function(){
 		$('body').removeClass('down').addClass('up');		
 	});
 
+	$(window).on("touchstart", function(){
+		$('body').removeClass('up').addClass('down');
+		$audio[0].pause();
+		$audio[0].currentTime=0;
+		$audio[0].play();
+	}).on("touchend", function(){
+		$('body').removeClass('down').addClass('up');	
+	});
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 });
