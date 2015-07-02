@@ -9,3 +9,30 @@
     -webkit-transition: all .05s ease-in;
     transition: all .05s ease-in;
 }
+
+body {
+	-webkit-text-size-adjust:none;
+	margin:0;
+	padding:0;
+}
+
+#container {
+	position:absolute;
+	height:100%;
+	width:100%;
+}
+
+#statusContainer {
+	width:100%;
+	position:relative;
+	top:45%;
+}
+
+#statusContainer p {
+	font-size:5em;
+	font-family:'Fjalla One';
+	text-transform: uppercase;
+	text-align:center;
+	margin:0;
+	padding:0 10px 0 10px;
+}

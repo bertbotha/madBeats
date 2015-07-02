@@ -1,44 +1,59 @@
+// SAMPLES FROM HERE
+// http://trisamples.com/808-trapstep-pack-vol-1/
+// WHAT A LEKKER OKE
+
 (function(){
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // MAINZORS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var $audio = $('#beat');
+var $audioArray = $('.beat');
+var $app = angular.module('madBeats', ["ngTouch"]);
 
-var $app = angular.module('madBeats', []);
-
-$app.controller('BeatsMachine', function(){
-
-	$audio[0].volume = 0.5;
+$app.controller('BeatsMachine', function($scope){
+	
+	this.state = "ready";
+	this.hasRepeated = false;
+	this.player = "PlayerOne";
+	this.audioIndex = 0;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// WHERE THE MAGIC HAPPENS
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
-	$(window).keydown(function(){		
-		$('body').removeClass('up').addClass('down');
-		registerHit();
-	}).keyup(function(){		
-		$('body').removeClass('down').addClass('up');		
-	});
+	this.registerHit = function () {		
 
-	$(window).on("touchstart", function(){
-		$('body').removeClass('up').addClass('down');
-		registerHit();
-	}).on("touchend", function(){
-		$('body').removeClass('down').addClass('up');	
-	});
+		$audio = $audioArray[this.audioIndex];
+		$audio.volume = 0.5;
 
-	function registerHit () {
+		// PLAYING (FIRST RUN)
+		if(this.state == "playing"){
+			$('body').removeClass('up').addClass('down');
+		//	$audio.pause();
+			$audio.currentTime=0;
+			$audio.play();
+			this.audioIndex ++;
+			if(this.audioIndex > $('.beat').length-1){
+				this.audioIndex = 0;
+			}
 
-		$audio[0].pause();
-		$audio[0].currentTime=0;
-		$audio[0].play();
+		// READY TO START / IDLE
+		} else if(this.state == "ready"){
+			this.state="playing";		
 
+		// REPLAY BEAT	
+		} else if(this.state == "repeating"){
+
+		}
 	}
 
-
+	this.hitOff = function () {
+		if($('body').hasClass('down')){
+			$('body').removeClass('down').addClass('up');
+		}
+	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
