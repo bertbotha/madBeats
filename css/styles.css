@@ -20,6 +20,7 @@ body {
 	position:absolute;
 	height:100%;
 	width:100%;
+	overflow:hidden;
 }
 
 #statusContainer {
@@ -43,4 +44,24 @@ body {
 	width:100%;
 	height:50px;
 	background:blue;
+}
+#drumTrack {
+	position:absolute;
+	width:100%;	
+	bottom:0px;
+	z-index:-5;
+}
+#drumTrack div {
+	width:100%;
+	height:20px;
+	background:red;
+	position:absolute;	
+}
+
+#drumHitRange {
+	height:50px;
+	width:100%;
+	position:absolute;
+	bottom:0px;
+	background:rgba(255, 0, 0, 0.5);
 }
